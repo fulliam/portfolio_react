@@ -1,0 +1,17 @@
+.hit-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 100%;
+  font-family: 'Anton SC', sans-serif;
+  font-weight: bold;
+  color: #333;
+}
+
+.hit-word {
+  display: block;
+  transform-origin: center center;
+  white-space: nowrap;
+}

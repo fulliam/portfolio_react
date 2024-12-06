@@ -1,0 +1,28 @@
+.animation-container {
+  width: 100%; 
+  height: 100%; 
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #9B51E0, #4A90E2);
+  border-radius: 20px;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.moving-text {
+  position: absolute;
+  font-size: 22px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #12cb4a;
+}
+
+.moving-text.boundary-hit {
+  color: #12b8cb;
+}

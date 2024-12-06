@@ -1,0 +1,66 @@
+@import '../../assets/styles/variables';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 0;
+  background: rgba($dark-bg, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: $z-header;
+  border-bottom: 1px solid rgba($text-light, 0.1);
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $text-light;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.25rem;
+    transition: $transition-fast;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__nav-item {
+    position: relative;
+    color: $text-light;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: $transition-fast;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &.active {
+      color: $primary-color;
+    }
+  }
+
+  &__nav-indicator {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #bf0024;
+    border-radius: 1px;
+  }
+}
