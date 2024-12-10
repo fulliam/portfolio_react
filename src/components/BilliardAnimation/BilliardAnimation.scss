@@ -3,7 +3,7 @@
   height: 100%; 
   position: relative;
   overflow: hidden;
-  background: linear-gradient(90deg, #9B51E0, #4A90E2);
+  background: linear-gradient(#123 30%, #667);
   border-radius: 20px;
 }
 
@@ -16,13 +16,59 @@
 
 
 .moving-text {
+  font-family: "Press Start 2P", system-ui;
   position: absolute;
-  font-size: 22px;
+  font-size: 1rem;
   font-weight: bold;
   white-space: nowrap;
   color: #12cb4a;
 }
 
-.moving-text.boundary-hit {
-  color: #12b8cb;
+$d: 70;      // density
+$w: 600;     // grid size
+$s: 3s;       // speed
+
+// Generate the snow image using radial gradients
+$grad: ();
+@for $i from 0 to $d {
+  $v: random(4) + 2;
+  $a: random(5) * .1 + .5;
+  $grad: $grad, radial-gradient(
+      $v+px $v+px at
+      (random($w - $v * 2) + $v)+px
+      (random($w - $v * 2) + $v)+px, 
+      rgba(255,255,255,$a) 50%,
+      rgba(0,0,0,0)
+  ) !global;
+}
+
+.snow, .snow:before, .snow:after {
+  position: absolute;
+  top: -$w + px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: $grad;
+  background-size: $w + px $w + px;
+  animation: snow $s linear infinite;
+  content: "";
+}
+.snow:after {
+  margin-left: -$w/3 + px;
+  opacity: .4;
+  animation-duration: $s*2;
+  animation-direction: reverse;
+  filter: blur(3px);
+}
+.snow:before {
+  animation-duration: $s*3;
+  animation-direction: reverse;
+  margin-left: -$w/2 + px;
+  opacity: .65;
+  filter: blur(1.5px);
+}
+@keyframes snow {
+  to {
+    transform: translateY($w + px);
+  }
 }

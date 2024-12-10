@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import './HitText.scss';
 
 const words = [
-  { text: 'MY', style: { color: '#080a1091', fontSize: '10rem' }, position: 10 },
-  { text: '🔥🔥🔥', style: { color: '#ff61baa8', fontSize: '4.2rem' }, position: 40 },
-  { text: 'STACK', style: { color: '#080a1091', fontSize: '5rem' }, position: 54 },
+  { text: 'MY', style: { color: '#080a1091', fontSize: 'calc(3rem + 1.5vw)' }, position: 10 },
+  { text: '🔥🔥🔥', style: { color: '#ff61baa8', fontSize: 'calc(2rem + 1.5vw)' }, position: 37 },
+  { text: 'STACK', style: { color: '#080a1091', fontSize: 'calc(2rem + 1.5vw)' }, position: 60 },
 ];
 
 const HitText = () => {

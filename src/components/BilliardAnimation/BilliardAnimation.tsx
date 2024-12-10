@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './BilliardAnimation.scss';
 
 interface BilliardAnimationProps {
@@ -24,22 +24,29 @@ const BilliardAnimation: React.FC<BilliardAnimationProps> = ({ text }) => {
   const textSize = useRef<Size>({ width: 0, height: 0 });
   const containerSize = useRef<Size>({ width: 0, height: 0 });
 
-  const colors = ['#12b8cb', '#ff6347', '#32cd32', '#ff1493']; // Массив цветов
-  const colorIndex = useRef(0); // Индекс текущего цвета
+  const colors = ['#12b8cb', '#ff6347', '#32cd32', '#ff1493'];
+  const shadowColors = ['rgba(255, 99, 71, 0.7)', 'rgba(50, 205, 50, 0.7)', 'rgba(255, 20, 147, 0.7)', 'rgba(255, 215, 0, 0.7)']; // Массив цветов для тени (другие цвета)
+  const colorIndex = useRef(0);
+  const shadowIndex = useRef(0);
+
+  const words = ['I CAN', 'FRONTEND', 'REACT', 'JAVASCRIPT', 'WEBDEV', 'PROGRAMMING'];
+  const [currentWord, setCurrentWord] = useState<string>(text);
 
   const updateSizes = () => {
     if (textRef.current && containerRef.current) {
       textSize.current = {
-        width: textRef.current.offsetWidth,
-        height: textRef.current.offsetHeight,
+        width: textRef.current.getBoundingClientRect().width + 16,
+        height: textRef.current.getBoundingClientRect().height,
       };
 
       containerSize.current = {
-        width: containerRef.current.offsetWidth,
-        height: containerRef.current.offsetHeight,
+        width: containerRef.current.getBoundingClientRect().width,
+        height: containerRef.current.getBoundingClientRect().height,
       };
     }
   };
+
+  updateSizes();
 
   useEffect(() => {
     updateSizes();
@@ -70,9 +77,17 @@ const BilliardAnimation: React.FC<BilliardAnimationProps> = ({ text }) => {
 
       if (textRef.current) {
         if (hitBoundary) {
-          // Меняем цвет при каждом отскоке
-          colorIndex.current = (colorIndex.current + 1) % colors.length; // Следующий цвет из массива
+        //   setCurrentWord(words[Math.floor(Math.random() * words.length)]);
+          
+          colorIndex.current = (colorIndex.current + 1) % colors.length;
+          shadowIndex.current = (shadowIndex.current + 1) % shadowColors.length;
+          
           textRef.current.style.color = colors[colorIndex.current];
+          
+          const offsetX = velocity.current.x * 2;
+          const offsetY = velocity.current.y * 2;
+          const blur = Math.abs(velocity.current.x) + Math.abs(velocity.current.y) + 5;
+          textRef.current.style.textShadow = `${offsetX}px ${offsetY}px ${blur}px ${shadowColors[shadowIndex.current]}`;
         }
 
         textRef.current.style.transform = `translate(${position.current.x}px, ${position.current.y}px)`;
@@ -88,10 +103,11 @@ const BilliardAnimation: React.FC<BilliardAnimationProps> = ({ text }) => {
 
   return (
     <div className="animation-container" ref={containerRef}>
+      <div className="snow"></div>
       <div
         className="moving-text"
         ref={textRef}
-        dangerouslySetInnerHTML={{ __html: text }}
+        dangerouslySetInnerHTML={{ __html: currentWord }}
       />
     </div>
   );

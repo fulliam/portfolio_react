@@ -1,7 +1,9 @@
 @import 'variables';
 @import 'animations';
+@import 'breakpoints';
 
 @import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Oi&family=Press+Start+2P&display=swap');
 
 // Theme Variables
 .app {
@@ -57,4 +59,37 @@ body {
   background: rgba(var(--bg-primary)), 0.8;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(var(--text-primary)), 0.1;
+}
+
+
+html {
+  font-size: 50%;
+
+  @include xs {
+      font-size: 50%;
+  }
+
+  @include sm {
+      font-size: 70%;
+  }
+
+  @include md {
+      font-size: 125%;
+  }
+
+  @include lg {
+      font-size: 150%;
+  }
+
+  @include xl {
+      font-size: 230%;
+  }
+
+  @include xxl {
+      font-size: 300%;
+  }
+
+  @include xxxl {
+      font-size: 400%;
+  }
 }

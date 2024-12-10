@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Laptop } from 'lucide-react';
 
 import img1 from '@assets/images/slider/1.jpg';
 import img2 from '@assets/images/slider/2.jpg';
@@ -34,6 +33,8 @@ const images = [
 ];
 
 const Hero: React.FC = () => {
+  const textRef = useRef<HTMLHeadingElement | null>(null);
+
   return (
     <section className="hero">
       <div className="hero__intro">
@@ -44,13 +45,14 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <div className="hero__avatar">
-              <Laptop size={32} />
-            </div>
-            
             <div className="hero__text">
               <h1>
-                I'm <span className="text-gradient">Your Name</span>
+                I'm <span 
+                  className="text-gradient"
+                  ref={textRef}
+                >
+                  Your Name
+                </span>
               </h1>
               <p>
                 an enthusiastic Software developer from Kerala, India. 
@@ -61,8 +63,14 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ width: '300px', height: '300px' }}>
-            <BilliardAnimation text="FRONTEND </br>DEVELOPER" />
+          <div 
+            style={{
+              width: '100%', height: '400px',
+              borderRadius: '20px',
+              overflow: 'hidden',
+            }}
+          >
+            <BilliardAnimation text="DEV</br>NOW" />
           </div>
         </motion.div>
 
