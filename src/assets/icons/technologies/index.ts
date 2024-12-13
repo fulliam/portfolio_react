@@ -1,24 +1,52 @@
-export { default as IconCloud } from './iconCloud';
-export { default as IconDjango } from './iconDjango';
-export { default as IconDocker } from './iconDocker';
-export { default as IconFastAPI } from './iconFastAPI';
-export { default as IconFigma } from './iconFigma';
-export { default as IconFirebase } from './iconFirebase';
-export { default as IconGit } from './iconGit';
-export { default as IconGulp } from './iconGulp';
-export { default as IconJava } from './iconJava';
-export { default as IconJquery } from './iconJquery';
-export { default as IconJs } from './iconJs';
-export { default as IconMySql } from './iconMySql';
-export { default as IconNginx } from './iconNginx';
-export { default as IconNN } from './iconNN';
-export { default as IconPostgres } from './iconPostgres';
-export { default as IconPython } from './iconPython';
-export { default as IconRedis } from './iconRedis';
-export { default as IconRest } from './iconRest';
-export { default as IconSOAP } from './iconSOAP';
-export { default as IconTest } from './iconTest';
-export { default as IconTypescript } from './iconTypescript';
-export { default as IconVite } from './iconVite';
-export { default as IconVue } from './iconVue';
-export { default as IconWebpack } from './iconWebpack';
+import iconCloud from './iconCloud';
+import iconDjango from './iconDjango';
+import iconDocker from './iconDocker';
+import iconFastAPI from './iconFastAPI';
+import iconFigma from './iconFigma';
+import iconFirebase from './iconFirebase';
+import iconGit from './iconGit';
+import iconGulp from './iconGulp';
+import iconJava from './iconJava';
+import iconJquery from './iconJquery';
+import iconJs from './iconJs';
+import iconMySql from './iconMySql';
+import iconNginx from './iconNginx';
+import iconNN from './iconNN';
+import iconPostgres from './iconPostgres';
+import iconPython from './iconPython';
+import iconRedis from './iconRedis';
+import iconRest from './iconRest';
+import iconSOAP from './iconSOAP';
+import iconTest from './iconTest';
+import iconTypescript from './iconTypescript';
+import iconVite from './iconVite';
+import iconVue from './iconVue';
+import iconWebpack from './iconWebpack';
+
+export const icons = [
+    iconCloud,
+    iconDjango,
+    iconDocker,
+    iconFastAPI,
+    iconFigma,
+    iconFirebase,
+    iconGit,
+    iconGulp,
+    iconJava,
+    iconJquery,
+    iconJs,
+    iconMySql,
+    iconNginx,
+    iconNN,
+    iconPostgres,
+    iconPython,
+    iconRedis,
+    iconRest,
+    iconSOAP,
+    iconTest,
+    iconTypescript,
+    iconVite,
+    iconVue,
+    iconWebpack,
+] as const;
+  

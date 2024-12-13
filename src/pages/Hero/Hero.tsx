@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 
 import img1 from '@assets/images/slider/1.jpg';
@@ -14,9 +14,9 @@ import SocialSlider from '@components/SocialSlider/SocialSlider';
 import ImageSlider from '@components/ImageSlider/ImageSlider';
 import LocationMap from '@components/Map/LocationMap';
 import ContactForm from '@components/Contact/ContactForm';
-import HomeGrid from '@components/HomeGrid/HomeGrid';
-import ThemeToggle from '@components/ThemeToggle/ThemeToggle';
+import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher';
 import Blockquote from '@components/Blockquote/Blockquote';
+import { MousePointerClick } from 'lucide-react';
 import TechnologyCard from '@components/TechnologyCard/TechnologyCard';
 import BilliardAnimation from '@components/BilliardAnimation/BilliardAnimation';
 import './Hero.scss';
@@ -38,47 +38,31 @@ const Hero: React.FC = () => {
   return (
     <section className="hero">
       <div className="hero__intro">
-        <motion.div 
-          className="hero__content"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div>
-            <div className="hero__text">
-              <h1>
-                I'm <span 
-                  className="text-gradient"
-                  ref={textRef}
-                >
-                  Your Name
-                </span>
-              </h1>
-              <p>
-                an enthusiastic Software developer from Kerala, India. 
-                I'm passionate about PHP, Laravel, Tailwind CSS, technology, 
-                and music, and I'm dedicated to using my skills to create 
-                impactful solutions.
-              </p>
-            </div>
-          </div>
-
-          <div 
-            style={{
-              width: '100%', height: '400px',
-              borderRadius: '20px',
-              overflow: 'hidden',
-            }}
-          >
-            <BilliardAnimation text="DEV</br>NOW" />
-          </div>
-        </motion.div>
-
         <div className="hero__grid">
           <div className="card hero__grid-item-1">
-            <Blockquote>
-              📚 "If your problem can be solved just by thinking a little more, start." - <span style={{ color: '#39ea7e' }}>fulli@m</span>
-            </Blockquote>
+            <motion.div 
+              className="hero__content"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="hero__text">
+                <h1>
+                  I'm <span 
+                    className="text-gradient"
+                    ref={textRef}
+                  >
+                    Your Name
+                  </span>
+                </h1>
+                <p>
+                  an enthusiastic Software developer from Kerala, India. 
+                  I'm passionate about PHP, Laravel, Tailwind CSS, technology, 
+                  and music, and I'm dedicated to using my skills to create 
+                  impactful solutions.
+                </p>
+              </div>
+            </motion.div>
           </div>
           <div className="card hero__grid-item-2">
             <LocationMap />
@@ -87,7 +71,7 @@ const Hero: React.FC = () => {
             <ImageSlider images={images} interval={3000} />
           </div>
           <div className="card hero__grid-item-4">
-            <ThemeToggle />
+            <ThemeSwitcher />
           </div>
           <div className="card hero__grid-item-5">
             <SocialSlider />
@@ -96,15 +80,24 @@ const Hero: React.FC = () => {
             <TechnologyCard />
           </div>
           <div className="card hero__grid-item-7">
-
+            <BilliardAnimation text="DEV</br>NOW" />
           </div>
           <div className="card hero__grid-item-8">
-
+            <Blockquote>
+              📚 If your problem can be solved just by thinking little more, 
+              <div className='blockquote-action'>
+                <button className='blockquote-action-button'>
+                  START.
+                  <MousePointerClick className='blockquote-action-button__icon' />
+                </button>
+                &nbsp; - <span style={{ color: '#39ea7e' }}>fulli@m</span>
+              </div>
+            </Blockquote>
           </div>
         </div>
-        <HomeGrid />
-        <ContactForm />
       </div>
+
+      <ContactForm />
     </section>
   );
 };

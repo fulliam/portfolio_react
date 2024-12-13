@@ -3,17 +3,18 @@
 @import 'breakpoints';
 
 @import url('https://fonts.googleapis.com/css2?family=Anton+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Oi&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oi&family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;0,900;1,200;1,400;1,600;1,700;1,900&display=swap");
 
 // Theme Variables
-.app {
-  &.light {
+#root {
+  & .light {
     --bg-primary: #{$light-bg};
     --text-primary: #{$text-dark};
     --bg-secondary: #{$light-bg, 5%};
   }
   
-  &.dark {
+  & .dark {
     --bg-primary: #{$dark-bg};
     --text-primary: #{$text-light};
     --bg-secondary: #{$dark-bg, 5%};

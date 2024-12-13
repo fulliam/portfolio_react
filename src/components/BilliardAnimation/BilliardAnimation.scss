@@ -5,6 +5,11 @@
   overflow: hidden;
   background: linear-gradient(#123 30%, #667);
   border-radius: 20px;
+  display: flex;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .wrapper {
@@ -18,7 +23,7 @@
 .moving-text {
   font-family: "Press Start 2P", system-ui;
   position: absolute;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
   white-space: nowrap;
   color: #12cb4a;

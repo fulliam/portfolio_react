@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './BilliardAnimation.scss';
 
 interface BilliardAnimationProps {
@@ -19,29 +19,29 @@ const BilliardAnimation: React.FC<BilliardAnimationProps> = ({ text }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
 
-  const position = useRef<Position>({ x: 50, y: 50 });
+  const position = useRef<Position>({ x: 150, y: 150 });
   const velocity = useRef<Position>({ x: 1, y: 1 });
   const textSize = useRef<Size>({ width: 0, height: 0 });
   const containerSize = useRef<Size>({ width: 0, height: 0 });
 
   const colors = ['#12b8cb', '#ff6347', '#32cd32', '#ff1493'];
-  const shadowColors = ['rgba(255, 99, 71, 0.7)', 'rgba(50, 205, 50, 0.7)', 'rgba(255, 20, 147, 0.7)', 'rgba(255, 215, 0, 0.7)']; // Массив цветов для тени (другие цвета)
+  const shadowColors = ['rgba(255, 99, 71, 0.7)', 'rgba(50, 205, 50, 0.7)', 'rgba(255, 20, 147, 0.7)', 'rgba(255, 215, 0, 0.7)'];
   const colorIndex = useRef(0);
   const shadowIndex = useRef(0);
-
-  const words = ['I CAN', 'FRONTEND', 'REACT', 'JAVASCRIPT', 'WEBDEV', 'PROGRAMMING'];
-  const [currentWord, setCurrentWord] = useState<string>(text);
 
   const updateSizes = () => {
     if (textRef.current && containerRef.current) {
       textSize.current = {
-        width: textRef.current.getBoundingClientRect().width + 16,
+        width: textRef.current.getBoundingClientRect().width + 32,
         height: textRef.current.getBoundingClientRect().height,
       };
 
       containerSize.current = {
-        width: containerRef.current.getBoundingClientRect().width,
-        height: containerRef.current.getBoundingClientRect().height,
+        width: containerRef.current.getBoundingClientRect().width - 12,
+        height: containerRef.current.getBoundingClientRect().height - 16,
+
+        // width: containerRef.current.getBoundingClientRect().width - 56,
+        // height: containerRef.current.getBoundingClientRect().height - 32,
       };
     }
   };
@@ -77,8 +77,6 @@ const BilliardAnimation: React.FC<BilliardAnimationProps> = ({ text }) => {
 
       if (textRef.current) {
         if (hitBoundary) {
-        //   setCurrentWord(words[Math.floor(Math.random() * words.length)]);
-          
           colorIndex.current = (colorIndex.current + 1) % colors.length;
           shadowIndex.current = (shadowIndex.current + 1) % shadowColors.length;
           
@@ -103,11 +101,11 @@ const BilliardAnimation: React.FC<BilliardAnimationProps> = ({ text }) => {
 
   return (
     <div className="animation-container" ref={containerRef}>
-      <div className="snow"></div>
+      {/* <div className="snow"></div> */}
       <div
         className="moving-text"
         ref={textRef}
-        dangerouslySetInnerHTML={{ __html: currentWord }}
+        dangerouslySetInnerHTML={{ __html: text }}
       />
     </div>
   );

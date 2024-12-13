@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ProjectCard from '../../components/ProjectCard/ProjectCard';
+import ProjectCard from '@components/ProjectCard/ProjectCard';
 import { Code, Database, Globe } from 'lucide-react';
 import './Projects.scss';
 

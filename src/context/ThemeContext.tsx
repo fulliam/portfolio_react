@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Theme, ThemeContextType } from '../types/theme';
+import { Theme, ThemeContextType } from '@/types/theme';
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -12,7 +12,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className={`app ${theme}`}>
+      <div className={`${theme}`}>
         {children}
       </div>
     </ThemeContext.Provider>

@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight, Github, Twitter, Linkedin, Instagram } from 
 import './SocialSlider.scss';
 
 const socialLinks = [
-  { icon: <Github size={24} />, url: 'https://github.com', name: 'GitHub', bgColor: '#333' },
+  { icon: <Github size={24} />, url: 'https://github.com', name: 'GitHub', bgColor: '#000' },
   { icon: <Twitter size={24} />, url: 'https://twitter.com', name: 'Twitter', bgColor: '#1DA1F2' },
   { icon: <Linkedin size={24} />, url: 'https://linkedin.com', name: 'LinkedIn', bgColor: '#0077B5' },
   { icon: <Instagram size={24} />, url: 'https://instagram.com', name: 'Instagram', bgColor: 'linear-gradient(115deg,#f9ce34,#ee2a7b,#6228d7)' },

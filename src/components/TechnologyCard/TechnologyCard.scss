@@ -1,4 +1,4 @@
-@import '../../assets/styles/variables';
+@import '@/assets/styles/variables';
 
 .technology-card {
   position: relative;
@@ -8,6 +8,10 @@
   border-radius: 16px;
   background-color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 
   .background-pattern {
     background-color: #f5f5f5;
@@ -22,23 +26,7 @@
     bottom: 0;
     background: radial-gradient(circle at top right, rgba(66, 255, 123, 0.301), transparent 60%),
                 radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.1), transparent 60%);
-    z-index: 1;
-  }
-
-  .rotated-columns {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    display: flex;
-    gap: 16px;
-  }
-
-  .icon-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    z-index: 2;
   }
 
   .icon-wrapper {
@@ -61,6 +49,7 @@
 
   .action-button {
     position: absolute;
+    z-index: 3;
     bottom: 16px;
     left: 16px;
     width: 32px;
@@ -78,5 +67,105 @@
       width: 16px;
       height: 16px;
     }
+  }
+}
+
+.banner {
+  display: inline-block;
+  animation: scroll 50s linear infinite;
+
+  &-item {
+    padding: 0 0.2em;
+    display: inline-block;
+    white-space: nowrap;
+
+    @media (max-width: 1024px) {
+      padding: 0 0.5em;
+    }
+  }
+}
+
+.diagonal-scroller {
+  z-index: 1;
+  white-space: nowrap;
+  color: #85aba8;
+  position: absolute;
+  letter-spacing: 2px;
+  font-size: 1.5em;
+  display: inline-flex;
+
+  svg {
+    rotate: 90deg;
+    width: 64px;
+    height: 64px;
+    background: rgba($dark-bg, 0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 8px;
+  }
+
+  &.chunk-1 {
+    top: 87px;
+    left: -640px;
+    transform: rotate(-55deg);
+  }
+
+  &.chunk-2 {
+    top: 64px;
+    left: -520px;
+    transform: rotate(-55deg);
+  }
+
+  &.chunk-3 {
+    top: 111px;
+    left: -450px;
+    transform: rotate(-55deg);
+  }
+
+  @media (max-width: 1024px) {
+    &.chunk-1 {
+      top: 10px;
+      left: -480px;
+      transform: rotate(-30deg);
+    }
+
+    &.chunk-2 {
+      top: 10px;
+      left: -305px;
+      transform: rotate(-30deg);
+    }
+
+    &.chunk-3 {
+      top: 10px;
+      left: -140px;
+      transform: rotate(-30deg);
+    }
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-start {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes scroll-second {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
   }
 }

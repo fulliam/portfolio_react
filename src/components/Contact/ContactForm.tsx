@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
-import Button from '../UI/Button';
-import Input from '../UI/Input';
+import Button from '@components/UI/Button';
+import Input from '@components/UI/Input';
 
 import QR from '@assets/images/qr_fulliam_tg.png';
 import QR2 from '@assets/images/qr_fulliam_tg_2.png';

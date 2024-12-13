@@ -1,0 +1,76 @@
+:root {
+	--sun-clr: #f3d05e;
+	--dark-clr: hsl(246, 23%, 16%);
+	--light-clr: hsl(240, 100%, 98%);
+	--clr-foreground: var(--dark-clr);
+	--clr-background: var(--light-clr);
+}
+
+.moon-mask,
+.sun-core,
+.sun-rays {
+	transition: 750ms ease-out;
+	transform-origin: center center;
+}
+
+.dark .moon-mask {
+	r: 9;
+	cx: 12;
+	cy: 4;
+}
+
+.light .moon-mask {
+	r: 5;
+	transform: rotate(-90deg) translateY(-10px);
+	cx: 20;
+	cy: 0;
+}
+
+.dark .sun-core {
+	transform: rotate(-40deg);
+}
+
+.dark .sun-rays {
+	transform: rotate(-180deg);
+	opacity: 0;
+}
+
+.light .sun-rays,
+.light .sun-core {
+	color: var(--sun-clr);
+	fill: var(--sun-clr);
+}
+
+.theme-switcher {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+
+	.img {
+		width: 200px;
+		height: 200px;
+		padding: 20px;
+	}
+
+	// .title {
+	// 	display: grid;
+	// 	place-content: center;
+	// 	font-family: "Poppins", sans-serif;
+	// 	position: absolute;
+	// 	width: 20px;
+	// 	left: 120px;
+	// 	top: 25px;
+	// 	z-index: -1;
+
+	// 	h1 {
+	// 		font-weight: 900;
+	// 		font-size: clamp(0.975rem, 0.325rem + 3.25vw, 2.6rem);
+	// 		line-height: 0.7;
+	// 		letter-spacing: 0.02em;
+	// 		color: #cf61d5;
+	// 	}
+	// }
+}
